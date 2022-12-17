@@ -1,19 +1,22 @@
-FROM python:latest as img1
+FROM python:latest
 
-WORKDIR /usr/app/src
+WORKDIR /app/
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gcc
+
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
 
 
-
-COPY server_1.py ./
-COPY requirements.txt ./
+COPY ./server_1.py /app/server_1.py
+COPY ./server_2.py /app/server_2.py
+COPY ./requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
-FROM python:latest as img2
-WORKDIR /usr/app/src
 
 
 
-
-COPY server_2.py ./
-COPY requirements.txt ./
-RUN pip install -r requirements.txt
