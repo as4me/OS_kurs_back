@@ -46,7 +46,7 @@ async def new_client_connected(client_socket: websockets.WebSocketClientProtocol
         all_clients.remove(client_socket)
         
 async def start_server():
-    await websockets.serve(new_client_connected,"176.119.157.22",7890)
+    await websockets.serve(new_client_connected,"localhost",7890)
     
     
 if __name__ == '__main__':
