@@ -4,7 +4,11 @@ services:
     container_name: server_1
     build: ./
     command: python3 ./server_1.py
+    ports:
+      - "7890:7890"
   img2:
     container_name: server_2
     build: ./
     command: python3 ./server_2.py
+    ports:
+      - "7891:7891"
