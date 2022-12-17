@@ -1,0 +1,9 @@
+services:
+  img1:
+    container_name: server_1
+    build: ./
+    command: python3 ./server_1.py
+  img2:
+    container_name: server_2
+    build: ./
+    command: python3 ./server_2.py
